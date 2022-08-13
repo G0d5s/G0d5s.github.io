@@ -74,10 +74,19 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/12/minio/">MINIO的安装使用</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<h2 id="title-MINIO的安装使用"><a href="#title-MINIO的安装使用" class="headerlink" title="title:MINIO的安装使用"></a>title:MINIO的安装使用</h2><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h2><p>docker pull minio/minio</p>
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h2><p>docker pull minio/minio</p>
 <h2 id="创建挂载文件"><a href="#创建挂载文件" class="headerlink" title="创建挂载文件"></a>创建挂载文件</h2><p>mkdir -p /home/minio/config<br>mkdir -p /home/minio/data</p>
 <h2 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h2><p>docker run -p 9000:9000 -p 9090:9090 \            绑定端口<br>     –net=host \                                    设置容器网络模式 为 host<br>     –name minio \                                容器名称 为minio<br>     -d –restart=always \                            自启动<br>     -e “MINIO_ACCESS_KEY=minioadmin” \            设置access<br>     -e “MINIO_SECRET_KEY=minioadmin” \            设置secret<br>     -v /home/minio/data:/data \                    挂载<br>     -v /home/minio/config:/root/.minio \            挂载<br>     minio/minio server \                            版本<br>     /data –console-address “:9090” -address “:9000” 固定端口</p>
 <h1 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h1><h2 id="pom导入"><a href="#pom导入" class="headerlink" title="pom导入"></a>pom导入</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.minio&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;minio&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;7.1.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;</span><br><span class="line">    &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
@@ -236,7 +245,7 @@
       <ul>
         
           <li>
-            <a href="/2022/08/12/minio/">(no title)</a>
+            <a href="/2022/08/12/minio/">MINIO的安装使用</a>
           </li>
         
           <li>
